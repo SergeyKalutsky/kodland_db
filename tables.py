@@ -6,7 +6,7 @@ class Users(Base):
 
     __tablename__ = 'users'
 
-    login = Column(String, unique=True, index=True)
+    login = Column(String, unique=True, index=True, primary_key=True)
     password = Column(String)
     email = Column(String)
     phone_number = Column(String)
@@ -15,15 +15,15 @@ class Users(Base):
 class Items(Base):
     __tablename__ = 'items'
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True,  unique=True)
     name = Column(String)
     description = Column(String)
     image = Column(String)
     price = Column(Integer)
 
 
-class Ordesr(Base):
-    __tablename__ = 'items'
+class Orders(Base):
+    __tablename__ = 'orders'
 
     id = Column(Integer, primary_key=True, index=True)
     item_id = Column(Integer)

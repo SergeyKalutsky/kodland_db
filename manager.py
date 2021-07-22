@@ -1,6 +1,6 @@
 from sqlalchemy.sql.expression import table
-from db import sess
-import tables
+from .db import sess
+from . import tables
 
 t = {}
 for attr_desc in dir(tables):

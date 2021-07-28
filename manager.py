@@ -34,7 +34,7 @@ class TableWrapper:
             for row in data:
                 print(getattr(row, key))
             return 
-            
+
         # Вывод всей таблицы
         print(' | '.join(self.keys))
         for row in data:
@@ -46,6 +46,11 @@ class TableWrapper:
 
     def delete(self, key, val):
         sess.query(self.table).filter(getattr(self.table, key) == val).delete()
+        sess.commit()
+
+    def update(self, key, old_val, new_val):
+        sess.query(self.table).filter(getattr(self.table, key) == old_val).\
+            update({key: new_val})
         sess.commit()
 
     def get(self, key, val):
